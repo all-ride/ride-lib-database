@@ -36,8 +36,8 @@ class Index {
     /**
      * Set the name of this index
      * @param string name name of this index
-     * @throws ride\library\database\exception\DatabaseException when no valid string provided as name
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when no valid string provided as name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * of the index is empty
      */
     private function setName($name) {
@@ -60,7 +60,7 @@ class Index {
      * Set the fields for this index
      * @param array fields array with Field instances
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when an empty
+     * @throws \ride\library\database\exception\DatabaseException when an empty
      * array is provided for the fields or when there is a non Field instance
      * in the array
      */

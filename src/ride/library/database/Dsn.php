@@ -62,8 +62,8 @@ class Dsn {
      * Constructs a new DSN
      * @param string $dsn String of the database source name
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the provided DSN is not a string
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the provided DSN is not a string
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided DSN is empty or invalid
      */
     public function __construct($dsn) {

@@ -19,7 +19,7 @@ abstract class AliasExpression extends Expression {
      * Set the alias of this expression
      * @param string $alias
      * @return null
-     * @throws ride\library\database\exception\DatabaseException
+     * @throws \ride\library\database\exception\DatabaseException
      */
     public function setAlias($alias = null) {
         if ($alias === null) {

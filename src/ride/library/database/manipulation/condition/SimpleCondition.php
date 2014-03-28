@@ -20,21 +20,21 @@ class SimpleCondition extends Condition {
 
     /**
      * Expression left of the operator
-     * @var ride\library\database\manipulation\expression\Expression
+     * @var \ride\library\database\manipulation\expression\Expression
      */
     private $expressionLeft;
 
     /**
      * Expression right of the operator
-     * @var ride\library\database\manipulation\expression\Expression
+     * @var \ride\library\database\manipulation\expression\Expression
      */
     private $expressionRight;
 
     /**
      * Constructs a new condition
-     * @param ride\library\database\manipulation\expression\Expression  $expressionLeft Expression
+     * @param \ride\library\database\manipulation\expression\Expression  $expressionLeft Expression
      * left of the comparison operator
-     * @param ride\library\database\manipulation\expression\Expression $expressionRight Expression
+     * @param \ride\library\database\manipulation\expression\Expression $expressionRight Expression
      * right of the comparison operator
      * @param string $operator comparison operator between the fields (=, <, >,
      * ...) (default =)
@@ -50,7 +50,7 @@ class SimpleCondition extends Condition {
      * Sets the comparison operator of this condition
      * @param string $operator Operator to compare the fields
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * operator is empty or not a valid string
      */
     protected function setOperator($operator = null) {
@@ -77,7 +77,7 @@ class SimpleCondition extends Condition {
 
     /**
      * Gets expression left of the comparison operator
-     * @return ride\library\database\manipulation\expression\Expression
+     * @return \ride\library\database\manipulation\expression\Expression
      */
     public function getLeftExpression() {
         return $this->expressionLeft;
@@ -85,7 +85,7 @@ class SimpleCondition extends Condition {
 
     /**
      * Gets expression right of the comparison operator
-     * @return ride\library\database\manipulation\expression\Expression
+     * @return \ride\library\database\manipulation\expression\Expression
      */
     public function getRightExpression() {
         return $this->expressionRight;

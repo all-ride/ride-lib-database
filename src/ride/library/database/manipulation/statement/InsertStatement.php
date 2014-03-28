@@ -20,7 +20,7 @@ class InsertStatement extends TableStatement {
 
     /**
      * Add the table this insert statement (only 1 table allowed)
-     * @param ride\library\database\manipulation\expression\TableExpression $table
+     * @param \ride\library\database\manipulation\expression\TableExpression $table
      * @return null;
      */
     public function addTable(TableExpression $table) {

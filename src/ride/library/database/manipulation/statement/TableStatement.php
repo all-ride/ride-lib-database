@@ -3,7 +3,6 @@
 namespace ride\library\database\manipulation\statement;
 
 use ride\library\database\manipulation\expression\TableExpression;
-use ride\library\database\manipulation\statement\Statement;
 
 /**
  * Base class for a statement with tables
@@ -18,7 +17,7 @@ abstract class TableStatement extends Statement {
 
     /**
      * Adds a table to the statement
-     * @param ride\library\database\manipulation\expression\TableExpression $table
+     * @param \ride\library\database\manipulation\expression\TableExpression $table
      * @return null;
      */
     public function addTable(TableExpression $table) {

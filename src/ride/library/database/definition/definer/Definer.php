@@ -12,21 +12,21 @@ interface Definer {
 
     /**
      * Sets the connection to this definer
-     * @param ride\library\database\driver\Driver $connection
+     * @param \ride\library\database\driver\Driver $connection
      * @return null
      */
     public function setConnection(Driver $connection);
 
     /**
      * Gets the connection of this definer
-     * @return ride\library\database\driver\Driver
+     * @return \ride\library\database\driver\Driver
      */
     public function getConnection();
 
     /**
      * Gets the table definition of a table
      * @param string $name Name of the table
-     * @return ride\library\database\definition\Table Table definition
+     * @return \ride\library\database\definition\Table Table definition
      */
     public function getTable($name);
 
@@ -34,14 +34,14 @@ interface Definer {
      * Defines a table in the connection with the given table definition. If
      * the table does not exist, it will be created. If the table structure is
      * different than the definition, it will be altered
-     * @param ride\library\database\definition\Table $table Table definition
+     * @param \ride\library\database\definition\Table $table Table definition
      * @return null
      */
     public function defineTable(Table $table);
 
     /**
      * Defines the foreign keys for the provided table
-     * @param ride\library\database\definition\Table $table Table definition
+     * @param \ride\library\database\definition\Table $table Table definition
      * @return null
      */
     public function defineForeignKeys(Table $table);

@@ -33,13 +33,13 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Instance of the driver for the connection which is using this parser
-     * @var ride\łibrary\database\driver\AbstractDriver
+     * @var \ride\library\database\driver\AbstractDriver
      */
     protected $connection;
 
     /**
      * Construct a new statement parser
-     * @param ride\library\database\driver\AbstractDriver $connection
+     * @param \ride\library\database\driver\AbstractDriver $connection
      * @param ExpressionParser $expressionParser
      * @return null
      */
@@ -51,7 +51,7 @@ class GenericStatementParser implements StatementParser {
      * Get the SQL of a statement
      * @param Statement $statement statement to translate into sql
      * @return string SQL of the statement
-     * @throws ride\library\database\exception\DatabaseException when the statement is not supported by this parser
+     * @throws \ride\library\database\exception\DatabaseException when the statement is not supported by this parser
      */
     public function parseStatement(Statement $statement) {
         if ($statement instanceof SelectStatement) {
@@ -74,7 +74,7 @@ class GenericStatementParser implements StatementParser {
      * Get the SQL of a delete statement
      * @param DeleteStatement $statement
      * @return string SQL of the delete statement
-     * @throws ride\library\database\exception\DatabaseException when no table was added to the statement
+     * @throws \ride\library\database\exception\DatabaseException when no table was added to the statement
      */
     protected function parseDeleteStatement(DeleteStatement $statement) {
         $tables = $statement->getTables();
@@ -96,10 +96,10 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL of a insert statement
-     * @param ride\library\database\manipulation\statement\manipulation\InsertStatement $statement
+     * @param \ride\library\database\manipulation\statement\InsertStatement $statement
      * @return string SQL of the insert statement
-     * @throws ride\library\database\exception\DatabaseException when no table was added to the statement
-     * @throws ride\library\database\exception\DatabaseException when no values where added to the statement
+     * @throws \ride\library\database\exception\DatabaseException when no table was added to the statement
+     * @throws \ride\library\database\exception\DatabaseException when no values where added to the statement
      */
     protected function parseInsertStatement(InsertStatement $statement) {
         $tables = $statement->getTables();
@@ -133,7 +133,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL for a select statement
-     * @param ride\library\database\manipulation\statement\manipulation\SelectStatement $statement
+     * @param \ride\library\database\manipulation\statement\SelectStatement $statement
      * @return string SQL of the select statement
      */
     protected function parseSelectStatement(SelectStatement $statement) {
@@ -186,10 +186,10 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL of a update statement
-     * @param ride\library\database\manipulation\statement\manipulation\UpdateStatement $statement
+     * @param \ride\library\database\manipulation\statement\UpdateStatement $statement
      * @return string SQL of the update statement
-     * @throws ride\library\database\exception\DatabaseException when no table was added to the statement
-     * @throws ride\library\database\exception\DatabaseException when no values where added to the statement
+     * @throws \ride\library\database\exception\DatabaseException when no table was added to the statement
+     * @throws \ride\library\database\exception\DatabaseException when no values where added to the statement
      */
     protected function parseUpdateStatement(UpdateStatement $statement) {
         $tables = $statement->getTables();
@@ -246,9 +246,9 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL of a condition
-     * @param ride\library\database\manipulation\expression\condition\Condition $condition condition to translate into SQL
+     * @param \ride\library\database\manipulation\expression\condition\Condition $condition condition to translate into SQL
      * @return string SQL of the condition
-     * @throws ride\library\database\exception\DatabaseException when the condition is not supported by this parser
+     * @throws \ride\library\database\exception\DatabaseException when the condition is not supported by this parser
      */
     protected function parseCondition(Condition $condition, $useAlias = true) {
         if ($condition instanceof SimpleCondition) {
@@ -266,7 +266,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a nested condition
-     * @param ride\library\database\manipulation\expression\condition\NestedCondition $condition
+     * @param \ride\library\database\manipulation\expression\condition\NestedCondition $condition
      * @param boolean useAlias
      * @return string sql of the nested condition
      */
@@ -286,7 +286,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a simple condition
-     * @param ride\library\database\manipulation\expression\condition\SimpleCondition $condition
+     * @param \ride\library\database\manipulation\expression\condition\SimpleCondition $condition
      * @param boolean useAlias
      * @return string sql part of the simple condition
      */
@@ -320,10 +320,10 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL of a expression
-     * @param ride\library\database\manipulation\expression\Expression $expression expression to translate into SQL
+     * @param \ride\library\database\manipulation\expression\Expression $expression expression to translate into SQL
      * @param boolean $useAlias get the alias of the expression
      * @return string SQL of the expression
-     * @throws ride\library\database\exception\DatabaseException when the expression is not supported by this parser
+     * @throws \ride\library\database\exception\DatabaseException when the expression is not supported by this parser
      */
     protected function parseExpression(Expression $expression, $useAlias = false) {
         if ($expression instanceof FieldExpression) {
@@ -377,7 +377,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL of a expression for a SELECT expression
-     * @param ride\library\database\manipulation\expression\Expression $expression
+     * @param \ride\library\database\manipulation\expression\Expression $expression
      * @return string SQL of the expression for a SELECT expression
      */
     protected function parseExpressionForSelect(Expression $expression) {
@@ -416,7 +416,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a function expression
-     * @param ride\library\database\manipulation\expression\FunctionExpression $function
+     * @param \ride\library\database\manipulation\expression\FunctionExpression $function
      * @return string SQL of the function expression
      */
     protected function parseFunctionExpression(FunctionExpression $function) {
@@ -441,7 +441,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a mathematical expression
-     * @param ride\library\database\manipulation\expression\MathematicalExpression $expression
+     * @param \ride\library\database\manipulation\expression\MathematicalExpression $expression
      * @param boolean $useAlias
      * @return string SQL of the mathematical expression
      */
@@ -461,7 +461,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a case expression
-     * @param ride\library\database\manipulation\expression\CaseExpression $case
+     * @param \ride\library\database\manipulation\expression\CaseExpression $case
      * @return string SQL of the case expression
      */
     protected function parseCaseExpression(CaseExpression $case, $useAlias = true) {
@@ -493,7 +493,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the SQL for the provided scalar expression
-     * @param ride\library\database\manipulation\expression\ScalarExpression $expression
+     * @param \ride\library\database\manipulation\expression\ScalarExpression $expression
      * @param boolean $useAlias true to use the table's alias if set, false otherwise (default: true)
      * @return string SQL of the scalar expression
      */
@@ -516,7 +516,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Get the quoted name of the given table, ready to query
-     * @param ride\library\database\manipulation\expression\TableExpression $table
+     * @param \ride\library\database\manipulation\expression\TableExpression $table
      * @param boolean $useAlias true to use the table's alias if set, false otherwise (default: true)
      * @return string quoted name of the table
      */
@@ -549,7 +549,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of the given table for a FROM expression
-     * @param ride\library\database\manipulation\expression\TableExpression $table
+     * @param \ride\library\database\manipulation\expression\TableExpression $table
      * @return string SQL representation of the table
      */
     protected function parseTableExpressionForFrom(TableExpression $table) {
@@ -565,7 +565,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of the joins of a table for a FROM expression
-     * @param ride\library\database\manipulation\expression\TableExpression $table
+     * @param \ride\library\database\manipulation\expression\TableExpression $table
      * @return string SQL representation of the joins
      */
     protected function parseTableExpressionJoins(TableExpression $table) {
@@ -585,7 +585,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a order expression
-     * @param ride\library\database\manipulation\expression\OrderExpression $order
+     * @param \ride\library\database\manipulation\expression\OrderExpression $order
      * @return string SQL of the order expression
      */
     protected function parseOrderExpression(OrderExpression $order) {
@@ -594,7 +594,7 @@ class GenericStatementParser implements StatementParser {
 
     /**
      * Create the SQL of a limit expression
-     * @param ride\library\database\manipulation\expression\LimitExpression $expression
+     * @param \ride\library\database\manipulation\expression\LimitExpression $expression
      * @return string SQL of the limit expression
      */
     protected function parseLimitExpression(LimitExpression $expression) {

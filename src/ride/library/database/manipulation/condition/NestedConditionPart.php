@@ -52,7 +52,7 @@ class NestedConditionPart {
      * Sets the logical operator of this condition
      * @param string $operator Logical operator used before this part
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * operator is not AND or OR
      */
     private function setOperator($operator = null) {
