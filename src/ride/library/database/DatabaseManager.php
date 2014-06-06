@@ -23,7 +23,7 @@ class DatabaseManager {
 
     /**
      * The Log
-     * @var ride\library\log\Log
+     * @var \ride\library\log\Log
      */
     protected $log;
 
@@ -78,7 +78,7 @@ class DatabaseManager {
 
     /**
      * Sets the Log to the manager
-     * @param ride\library\log\Log $log
+     * @param \ride\library\log\Log $log
      * @return null
      */
     public function setLog(Log $log) {
@@ -89,7 +89,7 @@ class DatabaseManager {
      * Hook to implement get[ConnectionName]Connection()
      * @param string $name Name of the invoked method
      * @param array $arguments Arguments for the method
-     * @return ride\library\database\driver\Driver
+     * @return \ride\library\database\driver\Driver
      * @throws Exception when the method is not a get[ConnectionName]Connection
      */
     public function __call($name, $arguments) {
@@ -105,9 +105,9 @@ class DatabaseManager {
      * @param string $name Name of the connection, skip this argument to get
      * the default connection
      * @param boolean $connect Set to false to skip connecting to the database
-     * @return ride\library\database\driver\Driver Instance of the database
+     * @return \ride\library\database\driver\Driver Instance of the database
      * connection
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * database connection could not be found
      */
     public function getConnection($name = null, $connect = true) {
@@ -163,7 +163,7 @@ class DatabaseManager {
      * Sets the default connection
      * @param string $defaultConnectionName Name of the new default connection
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * connection name is invalid or when the connection does not exist
      */
     public function setDefaultConnectionName($defaultConnectionName) {
@@ -187,9 +187,9 @@ class DatabaseManager {
      * @param string $name Name of the connection
      * @param Dsn $dsn DSN connection properties
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is invalid or already registered and connected
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * protocol has no driver available
      */
     public function registerConnection($name, Dsn $dsn) {
@@ -217,9 +217,9 @@ class DatabaseManager {
      * Unregisters a connection from the manager
      * @param string $name Name of the connection
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * name is invalid
-     * @throws ride\library\database\exception\DatabaseException when no
+     * @throws \ride\library\database\exception\DatabaseException when no
      * connection is registered with the provided name
      */
     public function unregisterConnection($name) {
@@ -283,9 +283,9 @@ class DatabaseManager {
      * @param string $protocol Database protocol of this driver
      * @param string $className Class name of the driver
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * protocol or class name is empty or invalid
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * database driver does not exist or is not a valid driver class
      */
     public function registerDriver($protocol, $className) {
@@ -314,9 +314,9 @@ class DatabaseManager {
      * Unregisters a driver from the manager
      * @param string $protocol Protocol of the connection
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * protocol is invalid
-     * @throws ride\library\database\exception\DatabaseException when no
+     * @throws \ride\library\database\exception\DatabaseException when no
      * driver is registered with the provided protocol
      */
     public function unregisterDriver($protocol) {
@@ -329,10 +329,10 @@ class DatabaseManager {
 
     /**
      * Gets the definer for a database connection
-     * @param ride\library\database\driver\Driver $connection Instance of a
+     * @param \ride\library\database\driver\Driver $connection Instance of a
      * connection
-     * @return ride\library\database\definition\definer\Definer
-     * @throws ride\library\database\exception\DatabaseException when no
+     * @return \ride\library\database\definition\definer\Definer
+     * @throws \ride\library\database\exception\DatabaseException when no
      * definer is registered for the protocol of the connection
      */
     public function getDefiner(Driver $connection) {
@@ -364,10 +364,10 @@ class DatabaseManager {
     /**
      * Registers a definer with it's protocol in the manager
      * @param string $protocol Database protocol of this definer
-     * @param ride\library\database\definition\definer\Definer $definer
+     * @param \ride\library\database\definition\definer\Definer $definer
      * Instance of the definer
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * protocol is empty or invalid
      */
     public function registerDefiner($protocol, Definer $definer) {
@@ -382,9 +382,9 @@ class DatabaseManager {
      * Unregisters a definer from the manager
      * @param string $protocol Protocol of the definer
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * protocol is invalid
-     * @throws ride\library\database\exception\DatabaseException when no
+     * @throws \ride\library\database\exception\DatabaseException when no
      * definer is registered with the provided protocol
      */
     public function unregisterDefiner($protocol) {

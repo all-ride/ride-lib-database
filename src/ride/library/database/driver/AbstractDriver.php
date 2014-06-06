@@ -21,7 +21,7 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * DSN of the connection
-     * @var ride\library\database\Dsn
+     * @var \ride\library\database\Dsn
      */
     protected $dsn;
 
@@ -33,19 +33,19 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Parser for statement objects
-     * @var ride\library\database\manipulation\StatementParser
+     * @var \ride\library\database\manipulation\StatementParser
      */
     protected $statementParser;
 
     /**
      * Instance of the log
-     * @var ride\library\log\Log
+     * @var \ride\library\log\Log
      */
     protected $log;
 
     /**
      * Constructs a new connection with a DSN
-     * @param ride\library\database\Dsn $dsn DSN with the connection parameters
+     * @param \ride\library\database\Dsn $dsn DSN with the connection parameters
      * @return null
      */
     public function __construct(Dsn $dsn) {
@@ -57,7 +57,7 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Gets the DSN of this connection
-     * @return ride\library\database\Dsn DSN of this connection
+     * @return \ride\library\database\Dsn DSN of this connection
      */
     public function getDsn() {
         return $this->dsn;
@@ -65,7 +65,7 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Sets a Log to the connection
-     * @param ride\library\log\Log $log
+     * @param \ride\library\log\Log $log
      * @return null
      */
     public function setLog(Log $log = null) {
@@ -74,7 +74,7 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Gets the log of this connection
-     * @return ride\library\log\Log
+     * @return \ride\library\log\Log
      */
     public function getLog() {
         return $this->log;
@@ -82,9 +82,9 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Executes a statement on this connection
-     * @param ride\library\database\manipulation\statement\Statement $statement
+     * @param \ride\library\database\manipulation\statement\Statement $statement
      * Definition of the statement
-     * @return ride\library\database\DatabaseResult Result of the statement
+     * @return \ride\library\database\DatabaseResult Result of the statement
      */
     public function executeStatement(Statement $statement) {
         $parser = $this->getStatementParser();
@@ -98,7 +98,7 @@ abstract class AbstractDriver implements Driver {
      * Quotes a identifier to use in SQL statements
      * @param string $identifier Identifier to quote
      * @return string Quoted identifier
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided identifier is empty or not a scalar value
      */
     public function quoteIdentifier($identifier) {
@@ -113,7 +113,7 @@ abstract class AbstractDriver implements Driver {
      * Quotes a value to use in SQL statements
      * @param string $value Value to quote
      * @return string Quoted value
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided value is not a scalar value
      */
     public function quoteValue($value) {
@@ -126,7 +126,7 @@ abstract class AbstractDriver implements Driver {
 
     /**
      * Gets the statement parser
-     * @return ride\library\database\manipulation\StatementParser
+     * @return \ride\library\database\manipulation\StatementParser
      */
     public function getStatementParser() {
         if ($this->statementParser === null) {

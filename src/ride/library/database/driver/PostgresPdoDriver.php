@@ -15,9 +15,9 @@ class PostgresPdoDriver extends PdoDriver {
     /**
      * Connects this connection
      * @return null
-     * @throws ride\library\database\mysql\exception\MysqlException when no
+     * @throws \ride\library\database\exception\MysqlException when no
      * connection could be made with the host
-     * @throws ride\library\database\mysql\exception\MysqlException when the
+     * @throws \ride\library\database\exception\MysqlException when the
      * database could not be selected
      */
     public function connect() {

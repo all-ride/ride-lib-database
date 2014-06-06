@@ -32,8 +32,8 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
     /**
      * Gets the table definition of an existing table in the database
      * @param string $name Name of the table
-     * @return ride\library\database\definition\Table Table definition
-     * @throws ride\library\database\mysql\exception\DatabaseException
+     * @return \ride\library\database\definition\Table Table definition
+     * @throws \ride\library\database\exception\DatabaseException
      */
     public function getTable($name) {
         $this->validateName($name);
@@ -155,7 +155,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
 
     /**
      * Gets the indexes of a table
-     * @param ride\library\database\definition\Table $table Definition of the
+     * @param \ride\library\database\definition\Table $table Definition of the
      * table
      * @return array Array with Index objects
      */
@@ -194,7 +194,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
 
     /**
      * Alters an existing table
-     * @param ride\library\database\definition\Table $table Table definition of
+     * @param \ride\library\database\definition\Table $table Table definition of
      * the altered table
      * @return null
      */
@@ -361,7 +361,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
 
     /**
      * Creates a new table
-     * @param ride\library\database\definition\Table $table Table definition
+     * @param \ride\library\database\definition\Table $table Table definition
      * for the new table
      * @return null
      */
@@ -475,7 +475,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
     /**
      * Adds a index to the provided table
      * @param string $tableName Quoted name of the table
-     * @param ride\library\database\definition\Index $index Index to add
+     * @param \ride\library\database\definition\Index $index Index to add
      * @return null
      */
     private function addIndex($tableName, Index $index) {
@@ -493,7 +493,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
     /**
      * Converts all tables in this database to UTF8
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when no fields
+     * @throws \ride\library\database\exception\DatabaseException when no fields
      * are found for one of the tables
      */
     public function convertDatabaseToUTF8() {
@@ -521,7 +521,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
      * Converts the provided table to UTF8
      * @param string $name Name of the table
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when no fields
+     * @throws \ride\library\database\exception\DatabaseException when no fields
      * are found for the provided table
      */
     public function convertTableToUTF8($name) {

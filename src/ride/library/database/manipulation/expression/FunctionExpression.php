@@ -61,7 +61,7 @@ class FunctionExpression extends AliasExpression {
      * Set the name of this function
      * @param string $name
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or not a string
      */
     private function setName($name = null) {

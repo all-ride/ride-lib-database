@@ -24,7 +24,7 @@ abstract class ConditionalStatement extends TableStatement {
 
     /**
      * Adds a condition to this statement
-     * @param ride\library\database\manipulation\condition\Condition $condition
+     * @param \ride\library\database\manipulation\condition\Condition $condition
      * @return null
      */
     public function addCondition(Condition $condition) {
@@ -43,7 +43,7 @@ abstract class ConditionalStatement extends TableStatement {
      * Sets the logical operator for the conditions of this statement
      * @param string $operator Logical operator
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * operator is not AND or OR
      */
     public function setOperator($operator = null) {

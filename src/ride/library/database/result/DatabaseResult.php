@@ -172,7 +172,7 @@ class DatabaseResult implements Iterator {
     /**
      * Checks whether there are rows in this result
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when there are
+     * @throws \ride\library\database\exception\DatabaseException when there are
      * no rows in this result
      */
     protected function checkRowCount() {

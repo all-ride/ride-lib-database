@@ -34,8 +34,8 @@ class LimitExpression extends Expression {
      * Set the row count of this limit clause
      * @param int $rowCount
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when $rowCount is not numeric
-     * @throws ride\library\database\exception\DatabaseException when $rowCount
+     * @throws \ride\library\database\exception\DatabaseException when $rowCount is not numeric
+     * @throws \ride\library\database\exception\DatabaseException when $rowCount
      * is negative
      */
     private function setRowCount($rowCount) {
@@ -58,8 +58,8 @@ class LimitExpression extends Expression {
      * Set the offset of this limit clause
      * @param int $offset
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when $offset is not numeric
-     * @throws ride\library\database\exception\DatabaseException when $offset
+     * @throws \ride\library\database\exception\DatabaseException when $offset is not numeric
+     * @throws \ride\library\database\exception\DatabaseException when $offset
      * is invalid
      */
     private function setOffset($offset = null) {

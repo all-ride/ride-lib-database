@@ -2,7 +2,6 @@
 
 namespace ride\library\database\manipulation\statement;
 
-use ride\library\database\exception\DatabaseException;
 use ride\library\database\manipulation\condition\Condition;
 use ride\library\database\manipulation\expression\Expression;
 use ride\library\database\manipulation\expression\LimitExpression;
@@ -44,7 +43,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Limitation of this statement
-     * @var ride\library\database\manipulation\expression\LimitExpression
+     * @var \ride\library\database\manipulation\expression\LimitExpression
      */
     protected $limit = null;
 
@@ -67,7 +66,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Add a query field
-     * @param ride\library\database\manipulation\expression\Expression $field
+     * @param \ride\library\database\manipulation\expression\Expression $field
      * @return null
      */
     public function addField(Expression $field) {
@@ -92,7 +91,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Add a having condition to this statement
-     * @param ride\library\database\manipulation\condition\Condition $condition
+     * @param \ride\library\database\manipulation\condition\Condition $condition
      * @return null
      */
     public function addHaving(Condition $condition) {
@@ -109,7 +108,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Add a group by field to the query
-     * @param ride\library\database\manipulation\expression\Expression $field
+     * @param \ride\library\database\manipulation\expression\Expression $field
      * @return null
      */
     public function addGroupBy(Expression $field) {
@@ -134,7 +133,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Add an order definition
-     * @param ride\library\database\manipulation\expression\Expression $order
+     * @param \ride\library\database\manipulation\expression\Expression $order
      * @return null
      */
     public function addOrderBy(Expression $order) {
@@ -177,7 +176,7 @@ class SelectStatement extends ConditionalStatement {
 
     /**
      * Get the limitation
-     * @return ride\library\database\manipulation\expression\LimitExpression
+     * @return \ride\library\database\manipulation\expression\LimitExpression
      */
     public function getLimit() {
         return $this->limit;

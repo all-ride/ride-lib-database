@@ -19,7 +19,7 @@ class SqlCondition extends Condition {
      * Constructs a new SQL condition
      * @param string $sql The SQL
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided SQL is empty or not a string
      */
     public function __construct($sql) {
@@ -30,7 +30,7 @@ class SqlCondition extends Condition {
      * Sets the SQL for this condition
      * @param string $sql The SQL
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided SQL is empty or not a string
      */
     private function setSql($sql) {

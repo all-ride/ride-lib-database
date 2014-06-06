@@ -19,7 +19,7 @@ class SqlExpression extends Expression {
      * Construct a new SQL expression
      * @param string $sql
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the sql
+     * @throws \ride\library\database\exception\DatabaseException when the sql
      * is empty or not a string
      */
     public function __construct($sql) {
@@ -30,7 +30,7 @@ class SqlExpression extends Expression {
      * Set the SQL for this expression
      * @param string $sql
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the sql
+     * @throws \ride\library\database\exception\DatabaseException when the sql
      * is empty or not a string
      */
     private function setSql($sql) {

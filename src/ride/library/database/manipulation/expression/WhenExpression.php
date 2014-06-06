@@ -11,7 +11,7 @@ class WhenExpression extends Expression {
 
     /**
      * Condition for the when
-     * @var ride\library\database\manipulation\condition\Condition
+     * @var \ride\library\database\manipulation\condition\Condition
      */
     private $condition;
 
@@ -23,7 +23,7 @@ class WhenExpression extends Expression {
 
     /**
      * Construct a new WHEN part
-     * @param ride\library\database\manipulation\condition\Condition $condition
+     * @param \ride\library\database\manipulation\condition\Condition $condition
      * Condition for this part
      * @param Expression $expression Expression when the condition is true
      * @return null

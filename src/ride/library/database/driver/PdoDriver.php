@@ -4,7 +4,6 @@ namespace ride\library\database\driver;
 
 use ride\library\database\exception\DatabaseException;
 use ride\library\database\result\PdoDatabaseResult;
-use ride\library\database\Dsn;
 
 use \PDOException;
 use \PDO;
@@ -45,9 +44,9 @@ class PdoDriver extends AbstractDriver {
     /**
      * Connects this connection
      * @return null
-     * @throws ride\library\database\mysql\exception\MysqlException when no
+     * @throws \ride\library\database\exception\MysqlException when no
      * connection could be made with the host
-     * @throws ride\library\database\mysql\exception\MysqlException when the
+     * @throws \ride\library\database\exception\MysqlException when the
      * database could not be selected
      */
     public function connect() {
@@ -108,10 +107,10 @@ class PdoDriver extends AbstractDriver {
     /**
      * Executes an SQL script on the connection
      * @param string $sql SQL script
-     * @return ride\library\database\mysql\MysqlResult Result object
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @return \ride\library\database\result\PdoDatabaseResult Result object
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided SQL is empty
-     * @throws ride\library\database\exception\DatabaseException when not
+     * @throws \ride\library\database\exception\DatabaseException when not
      * connected to the database or when the SQL could not be executed
      */
     public function execute($sql) {
@@ -160,7 +159,7 @@ class PdoDriver extends AbstractDriver {
      * Quotes a database value
      * @param string $value value to quote
      * @return string quoted value
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided value is not a scalar value
      */
     public function quoteValue($value) {
@@ -196,7 +195,7 @@ class PdoDriver extends AbstractDriver {
      * Quotes a database identifier
      * @param string $identifier
      * @return string quoted identifier
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * provided identifier is not a scalar value or when $identifier is empty
      */
     public function quoteIdentifier($identifier) {

@@ -11,7 +11,7 @@ interface StatementParser {
 
     /**
      * Parses a statement into sql
-     * @param ride\library\database\manipulation\statement\Statement $statement
+     * @param \ride\library\database\manipulation\statement\Statement $statement
      * @return string SQL for the provided statement
      */
     public function parseStatement(Statement $statement);
