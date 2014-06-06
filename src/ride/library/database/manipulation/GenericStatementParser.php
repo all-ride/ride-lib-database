@@ -236,8 +236,9 @@ class GenericStatementParser implements StatementParser {
 
         foreach ($conditions as $condition) {
             if ($sql) {
-                $sql . ' ' . $operator . ' ';
+                $sql .= ' ' . $operator . ' ';
             }
+
             $sql .= $this->parseCondition($condition, $useAlias);
         }
 
