@@ -14,7 +14,7 @@ abstract class AbstractDefiner implements Definer {
 
     /**
      * Connection of this definer
-     * @var ride\library\database\driver\Driver
+     * @var \ride\library\database\driver\Driver
      */
     protected $connection;
 
@@ -34,7 +34,7 @@ abstract class AbstractDefiner implements Definer {
 
     /**
      * Sets the connection to this definer
-     * @param ride\library\database\driver\Driver $connection
+     * @param \ride\library\database\driver\Driver $connection
      * @return null
      */
     public function setConnection(Driver $connection) {
@@ -43,7 +43,7 @@ abstract class AbstractDefiner implements Definer {
 
     /**
      * Gets the connection of this definer
-     * @return ride\library\database\driver\Driver
+     * @return \ride\library\database\driver\Driver
      */
     public function getConnection() {
         return $this->connection;
@@ -53,7 +53,7 @@ abstract class AbstractDefiner implements Definer {
      * Defines a table in the connection with the given table definition. If
      * the table does not exist, it will be created. If the table structure is
      * different then the definition, it will be altered
-     * @param ride\library\database\definition\Table $table Table definition
+     * @param \ride\library\database\definition\Table $table Table definition
      * @return null
      */
     public function defineTable(Table $table) {
@@ -66,14 +66,14 @@ abstract class AbstractDefiner implements Definer {
 
     /**
      * Alters the table in the connection with the given table definition
-     * @param ride\library\database\definition\Table $table Table definition
+     * @param \ride\library\database\definition\Table $table Table definition
      * @return null
      */
     abstract protected function alterTable(Table $table);
 
     /**
      * Creates a new table in the connection
-     * @param ride\library\database\definition\Table $table Table definition of
+     * @param \ride\library\database\definition\Table $table Table definition of
      * the table to create
      * @return null
      */
@@ -83,7 +83,7 @@ abstract class AbstractDefiner implements Definer {
      * Drop a table from the connection if it exists
      * @param string $name name of the table to drop
      * @return null
-     * @throws ride\library\database\Exception\DatabaseException when the name
+     * @throws \ride\library\database\Exception\DatabaseException when the name
      * is empty or not a string
      */
     public function dropTable($name) {
@@ -98,7 +98,7 @@ abstract class AbstractDefiner implements Definer {
      * Checks if a table exists
      * @param string $name name of the table to check
      * @return boolean true if the table exists, false otherwise
-     * @throws ride\library\database\Exception\DatabaseException when the name
+     * @throws \ride\library\database\Exception\DatabaseException when the name
      * is empty or not a string
      */
     public function tableExists($name) {
@@ -150,10 +150,10 @@ abstract class AbstractDefiner implements Definer {
 
     /**
      * Translates a database layer's field type to a mysql field type
-     * @param string|ride\library\database\definition\Field $field field can be
+     * @param string| \ride\library\database\definition\Field $field field can be
      * a database layer's type or a Field object
      * @return string mysql field type
-     * @throws ride\library\database\exception\DatabaseException when no type
+     * @throws \ride\library\database\exception\DatabaseException when no type
      * found for the provided field or type
      */
     protected function getFieldType($field) {
@@ -195,7 +195,7 @@ abstract class AbstractDefiner implements Definer {
      * Checks if a name is a string and not empty
      * @param string $name
      * @return null
-     * @throws ride\library\database\Exception\DatabaseException when the name
+     * @throws \ride\library\database\Exception\DatabaseException when the name
      * is empty or not a string
      */
     protected function validateName($name) {

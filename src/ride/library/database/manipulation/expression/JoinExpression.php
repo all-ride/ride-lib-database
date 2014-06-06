@@ -42,7 +42,7 @@ class JoinExpression extends Expression {
 
     /**
      * The condition of this join expression
-     * @var ride\library\database\manipulation\condition\Condition
+     * @var \ride\library\database\manipulation\condition\Condition
      */
     private $condition;
 
@@ -50,7 +50,7 @@ class JoinExpression extends Expression {
      * Construct a new join expression
      * @param string $type join type (INNER, LEFT or RIGHT)
      * @param TableExpression $table table to join with
-     * @param ride\library\database\manipulation\condition\Condition $condition
+     * @param \ride\library\database\manipulation\condition\Condition $condition
      * join condition
      * @return null
      */
@@ -64,7 +64,7 @@ class JoinExpression extends Expression {
      * Set the join type
      * @param string $type possible values are INNER, LEFT and RIGHT
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the type
+     * @throws \ride\library\database\exception\DatabaseException when the type
      * is empty or not valid type
      */
     private function setType($type) {
@@ -97,7 +97,7 @@ class JoinExpression extends Expression {
 
     /**
      * Get the condition of this join
-     * @return ride\library\database\manipulation\condition\Condition
+     * @return \ride\library\database\manipulation\condition\Condition
      */
     public function getCondition() {
         return $this->condition;

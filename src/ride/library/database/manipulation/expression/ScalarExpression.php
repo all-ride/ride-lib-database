@@ -20,7 +20,7 @@ class ScalarExpression extends AliasExpression {
      * @param mixed $value Scalar value
      * @param string $alias Alias for the value
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the value
+     * @throws \ride\library\database\exception\DatabaseException when the value
      * if not a scalar value
      */
     public function __construct($value = null, $alias = null) {

@@ -65,7 +65,7 @@ class OrderExpression extends Expression {
      * Set the direction of this order clause
      * @param string direction
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * direction is empty or invalid
      */
     private function setDirection($direction = null) {

@@ -49,7 +49,7 @@ class Table {
      * Sets the name of the table
      * @param string $name Name of the table
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * of the table is empty or invalid
      */
     protected function setName($name) {
@@ -72,7 +72,7 @@ class Table {
      * Adds a field to the table
      * @param Field $field Definition of the field to add
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the field
+     * @throws \ride\library\database\exception\DatabaseException when the field
      * is already set to this table
      */
     public function addField(Field $field) {
@@ -96,8 +96,8 @@ class Table {
      * Gets the field definition of a field
      * @param string $name Name of the field
      * @return Field Field definition of the field
-     * @throws ride\library\database\exception\DatabaseException when no valid string provided as name
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when no valid string provided as name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or the field does not exist
      */
     public function getField($name) {
@@ -140,7 +140,7 @@ class Table {
      * Checks whether this table has a certain field
      * @param string $name Name of the field
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or invalid
      */
     public function hasField($name) {
@@ -158,7 +158,7 @@ class Table {
     /**
      * Adds a foreign key to the table
      * @param ForeignKey $foreignKey Definition of the foreign key to add
-     * @throws ride\library\database\exception\DatabaseException when the index
+     * @throws \ride\library\database\exception\DatabaseException when the index
      * is already set to this table
      */
     public function setForeignKey(ForeignKey $foreignKey) {
@@ -196,7 +196,7 @@ class Table {
      * Checks whether this table has a certain foreign key
      * @param string $fieldName Name of the foreign key field
      * @return boolean True if the foreign key exists, false otherwise
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or invalid
      */
     public function hasForeignKey($fieldName) {
@@ -214,7 +214,7 @@ class Table {
     /**
      * Adds an index to the table
      * @param Index $index Definition of the index to add
-     * @throws ride\library\database\exception\DatabaseException when the index
+     * @throws \ride\library\database\exception\DatabaseException when the index
      * is already set to this table
      */
     public function addIndex(Index $index) {
@@ -229,7 +229,7 @@ class Table {
      * Sets or adds a new index definition
      * @param Index $index Definition of the index to set or add
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the index
+     * @throws \ride\library\database\exception\DatabaseException when the index
      * contains a field which is not in this table
      */
     public function setIndex(Index $index) {
@@ -247,7 +247,7 @@ class Table {
      * Gets the index definition of an index
      * @param string $name Name of the index
      * @return Index Index definition of the index
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or invalid or the index does not exist
      */
     public function getIndex($name) {
@@ -271,7 +271,7 @@ class Table {
      * Checks whether this table has a certain index
      * @param string $name Name of the index
      * @return boolean True if the index exists, false otherwise
-     * @throws ride\library\database\exception\DatabaseException when the name
+     * @throws \ride\library\database\exception\DatabaseException when the name
      * is empty or invalid
      */
     public function hasIndex($name) {

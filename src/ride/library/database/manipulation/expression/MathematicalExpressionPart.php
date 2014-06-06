@@ -52,7 +52,7 @@ class MathematicalExpressionPart {
      * Set the mathematical operator of the expression
      * @param string $operator
      * @return null
-     * @throws ride\library\database\exception\DatabaseException when the
+     * @throws \ride\library\database\exception\DatabaseException when the
      * operator is empty or invalid
      */
     private function setOperator($operator = null) {

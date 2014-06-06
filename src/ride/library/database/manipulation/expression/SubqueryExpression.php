@@ -11,13 +11,13 @@ class SubqueryExpression extends Expression {
 
     /**
      * The select statement of this subquery expression
-     * @var ride\library\database\manipulation\statement\SelectStatement
+     * @var \ride\library\database\manipulation\statement\SelectStatement
      */
     private $statement;
 
     /**
      * Construct a new subquery expression
-     * @param ride\library\database\manipulation\statement\SelectStatement $selectStatement
+     * @param \ride\library\database\manipulation\statement\SelectStatement $selectStatement
      * @return null
      */
     public function __construct(SelectStatement $selectStatement) {
@@ -26,7 +26,7 @@ class SubqueryExpression extends Expression {
 
     /**
      * Get the select statement of this subquery
-     * @return ride\library\database\manipulation\statement\SelectStatement
+     * @return \ride\library\database\manipulation\statement\SelectStatement
      */
     public function getStatement() {
         return $this->statement;

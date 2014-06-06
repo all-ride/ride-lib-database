@@ -2,7 +2,6 @@
 
 namespace ride\library\database\definition\definer;
 
-use ride\library\database\definition\Field;
 use ride\library\database\definition\Index;
 use ride\library\database\definition\Table;
 use ride\library\database\exception\DatabaseException;
@@ -15,8 +14,8 @@ class SqliteDefiner extends AbstractDefiner {
     /**
      * Gets the table definition of an existing table in the database
      * @param string $name Name of the table
-     * @return ride\library\database\definition\Table Table definition
-     * @throws ride\library\database\sqlite\exception\DatabaseException
+     * @return \ride\library\database\definition\Table Table definition
+     * @throws \ride\library\database\exception\DatabaseException
      */
     public function getTable($name) {
         throw new DatabaseException('getTable is currently unsupported');
@@ -87,7 +86,7 @@ class SqliteDefiner extends AbstractDefiner {
 
     /**
      * Alters an existing table
-     * @param ride\library\database\definition\Table $table Table definition of the altered table
+     * @param \ride\library\database\definition\Table $table Table definition of the altered table
      * @return null
      */
     protected function alterTable(Table $table) {
@@ -238,7 +237,7 @@ class SqliteDefiner extends AbstractDefiner {
 
     /**
      * Creates a new table
-     * @param ride\library\database\definition\Table $table Table definition for the new table
+     * @param \ride\library\database\definition\Table $table Table definition for the new table
      * @return null
      */
     protected function createTable(Table $table) {
@@ -313,7 +312,7 @@ class SqliteDefiner extends AbstractDefiner {
     /**
      * Adds a index to the provided table
      * @param string $tableName Plain name of the table
-     * @param ride\library\database\definition\Index $index Index to add
+     * @param \ride\library\database\definition\Index $index Index to add
      * @return null
      */
     private function addIndex($tableName, Index $index) {
@@ -332,7 +331,7 @@ class SqliteDefiner extends AbstractDefiner {
      * Checks if a table exists
      * @param string $name name of the table to check
      * @return boolean true if the table exists, false otherwise
-     * @throws ride\library\database\Exception\DatabaseException when the name is empty or not a string
+     * @throws \ride\library\database\Exception\DatabaseException when the name is empty or not a string
      */
     public function tableExists($name) {
         $this->validateName($name);
