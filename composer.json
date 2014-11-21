@@ -1,7 +1,7 @@
 {
     "name": "ride/lib-database",
     "description": "Ride library for database abstraction.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "authors": [
         {
             "name": "Joris Vandeweerd",
