@@ -169,9 +169,7 @@ class PdoDriver extends AbstractDriver {
             return $value ? 1 : 0;
         }
 
-        $valueLength = strlen($value);
-
-        if (is_numeric($value)) {
+        if (is_int($value) || is_float($value)) {
             return $value;
         }
 
