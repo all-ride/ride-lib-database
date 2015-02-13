@@ -146,7 +146,7 @@ class GenericStatementParser implements StatementParser {
 
         $fields = $statement->getFields();
         if (empty($fields)) {
-            $sql . '*';
+            $sql .= '*';
         } else {
             $sql .= $this->parseExpressionsForSelect($fields);
         }
