@@ -94,7 +94,7 @@ class DatabaseManager {
      */
     public function __call($name, $arguments) {
         if (strpos($name, 'get') !== 0 && strpos(substr($name, -10), 'Connection') !== 0) {
-            throw new OrmException('Could not invoke ' . $name . ': method does not exist');
+            throw new DatabaseException('Could not invoke ' . $name . ': method does not exist');
         }
 
         return $this->getConnection(strtolower(substr($name, 3, -10)));
