@@ -51,18 +51,25 @@ class PdoDriver extends AbstractDriver {
      */
     public function connect() {
         $protocol = $this->dsn->getProtocol();
-        $host = $this->dsn->getHost();
-        $port = $this->dsn->getPort();
-        $username = $this->dsn->getUsername();
-        $password = $this->dsn->getPassword();
-        $database = $this->dsn->getDatabase();
 
-        $dsn = $protocol . ':host=' . $host;
-        if ($port) {
-            $dsn .= ';port=' . $port;
-        }
-        $dsn .= ';dbname=' . $database;
+        if ($protocol == 'sqlite') {
+            $dsn = (string) $this->dsn;
+            $username = null;
+            $password = null;
+        } else {
+            $host = $this->dsn->getHost();
+            $port = $this->dsn->getPort();
+            $username = $this->dsn->getUsername();
+            $password = $this->dsn->getPassword();
+            $database = $this->dsn->getDatabase();
+
+            $dsn = $protocol . ':host=' . $host;
+            if ($port) {
+                $dsn .= ';port=' . $port;
+            }
+            $dsn .= ';dbname=' . $database;
 //         $dsn .= ';charset=utf8'; // >= PHP 5.3.6
+        }
 
         $options = array(
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -84,7 +91,7 @@ class PdoDriver extends AbstractDriver {
         } catch (PDOException $exception) {
             $this->pdo = null;
 
-            throw new DatabaseException('Could not connect to ' . $protocol . '://' . $username . ':*****@' . $host . '/' . $database, 0, $exception);
+            throw new DatabaseException('Could not connect to ' . $this->dsn->getProtectedDsn(), 0, $exception);
         }
     }
 
