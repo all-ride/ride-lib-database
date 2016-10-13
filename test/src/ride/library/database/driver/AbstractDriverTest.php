@@ -12,7 +12,10 @@ class AbstractDriverTest extends PHPUnit_Framework_TestCase {
 
     protected function setUp() {
         $dsn = new Dsn('mysql://localhost/database');
-        $this->driver = $this->getMock('ride\\library\\database\\driver\\AbstractDriver', array('isConnected', 'connect', 'disconnect', 'ping', 'execute', 'getLastInsertId'), array($dsn));
+        $this->driver = $this->getMockBuilder('ride\\library\\database\\driver\\AbstractDriver')
+                             ->setConstructorArgs(array($dsn))
+                             ->setMethods(array('isConnected', 'connect', 'disconnect', 'ping', 'execute', 'getLastInsertId'))
+                             ->getMock();
     }
 
     /**
