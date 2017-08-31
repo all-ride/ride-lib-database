@@ -287,6 +287,39 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
         }
 
         $indexes = $table->getIndexes();
+
+        if ($uniques) {
+            $uniqueName = null;
+            $uniqueFields = array();
+
+            foreach ($uniques as $fieldName) {
+                $fieldName = substr($fieldName, 1, -1);
+
+                if ($uniqueName === null) {
+                    $uniqueName = $fieldName;
+                }
+
+                $uniqueFields[$fieldName] = $table->getField($fieldName);
+            }
+
+            $uniqueIndex = new Index($uniqueName, $uniqueFields);
+
+            $found = false;
+
+            $databaseIndexes = $databaseTable->getIndexes();
+            foreach ($databaseIndexes as $databaseIndex) {
+                if ($databaseIndex->equals($uniqueIndex)) {
+                    $found = true;
+
+                    break;
+                }
+            }
+
+            if ($found) {
+                $uniques = null;
+            }
+        }
+
         foreach ($indexes as $indexName => $index) {
             if (!$databaseTable->hasIndex($indexName)) {
                 continue;
