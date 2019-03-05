@@ -40,7 +40,7 @@ class SimpleCondition extends Condition {
      * ...) (default =)
      * @return null
      */
-    public function __construct(Expression $expressionLeft, Expression $expressionRight, $operator = null) {
+    public function __construct(Expression $expressionLeft, Expression $expressionRight = null, $operator = null) {
         $this->expressionLeft = $expressionLeft;
         $this->expressionRight = $expressionRight;
         $this->setOperator($operator);
