@@ -14,6 +14,7 @@ use ride\library\database\manipulation\expression\Expression;
 use ride\library\database\manipulation\expression\FieldExpression;
 use ride\library\database\manipulation\expression\FunctionExpression;
 use ride\library\database\manipulation\expression\LimitExpression;
+use ride\library\database\manipulation\expression\MatchExpression;
 use ride\library\database\manipulation\expression\MathematicalExpression;
 use ride\library\database\manipulation\expression\OrderExpression;
 use ride\library\database\manipulation\expression\ScalarExpression;
@@ -296,7 +297,11 @@ class GenericStatementParser implements StatementParser {
         $expressionRight = $condition->getRightExpression();
         $operator = $condition->getOperator();
 
-        return $this->parseExpression($expressionLeft, $useAlias) . ' ' . $operator . ' ' . $this->parseExpression($expressionRight, $useAlias);
+        if (!$expressionRight) {
+            return $this->parseExpression($expressionLeft, $useAlias);
+        } else {
+            return $this->parseExpression($expressionLeft, $useAlias) . ' ' . $operator . ' ' . $this->parseExpression($expressionRight, $useAlias);
+        }
     }
 
     /**
@@ -350,6 +355,9 @@ class GenericStatementParser implements StatementParser {
         }
         if ($expression instanceof MathematicalExpression) {
             return $this->parseMathematicalExpression($expression, $useAlias);
+        }
+        if ($expression instanceof MatchExpression) {
+            return $this->parseMatchExpression($expression, $useAlias);
         }
         if ($expression instanceof SubqueryExpression) {
             return $this->parseSelectStatement($expression->getStatement());
@@ -438,6 +446,27 @@ class GenericStatementParser implements StatementParser {
         }
 
         return $sql . ')';
+    }
+
+
+    /**
+     * Create the SQL of a mathematical expression
+     * @param \ride\library\database\manipulation\expression\MathematicalExpression $expression
+     * @param boolean $useAlias
+     * @return string SQL of the mathematical expression
+     */
+    protected function parseMatchExpression(MatchExpression $match, $useAlias = true) {
+        $fields = $match->getFields();
+        if (!$fields) {
+            throw new DatabaseException('No fields added to MatchExpression');
+        }
+
+        $fieldsSql = '';
+        foreach ($fields as $expression) {
+            $fieldsSql .= ($fieldsSql ? ', ' : '') . $this->parseExpression($expression, true);
+        }
+
+        return 'MATCH(' . $fieldsSql . ') AGAINST (' . $this->parseExpression($match->getExpression()) . $match->getModifier() . ')';;
     }
 
     /**
