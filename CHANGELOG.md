@@ -1,5 +1,9 @@
 # ride-lib-database
 
+## 1.1.1
+### Updated
+- removed usage of deprecated each function
+
 ## 1.1.0
 ### Added
 - added match expression
