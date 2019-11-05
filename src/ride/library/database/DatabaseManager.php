@@ -235,8 +235,11 @@ class DatabaseManager {
 
         if ($this->defaultConnectionName == $name) {
             if ($this->connections) {
-                $connection = each($this->connections);
-                $this->defaultConnectionName = $connection['key'];
+                foreach ($this->connections as $connectionName => $connection) {
+                    $this->defaultConnectionName = $connectionName;
+
+                    break;
+                }
             } else {
                 $this->defaultConnectionName = null;
             }
