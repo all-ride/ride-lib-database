@@ -631,8 +631,12 @@ class GenericStatementParser implements StatementParser {
         $rowCount = $expression->getRowCount();
         $offset = $expression->getOffset();
 
+        if ($rowCount <= 0) {
+            return '';
+        }
+
         $sql = ' LIMIT ' . $rowCount;
-        if ($offset != null) {
+        if ($offset !== null) {
             $sql .= ' OFFSET ' . $offset;
         }
 
