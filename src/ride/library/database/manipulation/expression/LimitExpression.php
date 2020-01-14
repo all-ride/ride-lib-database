@@ -39,7 +39,7 @@ class LimitExpression extends Expression {
      * is negative
      */
     private function setRowCount($rowCount) {
-        if (!is_integer($rowCount) || $rowCount <= 0) {
+        if ((!is_integer($rowCount) || $rowCount <= 0) && !$this->isVariable($rowCount)) {
             throw new DatabaseException('Provided row count should be a positive integer');
         }
 
@@ -63,7 +63,7 @@ class LimitExpression extends Expression {
      * is invalid
      */
     private function setOffset($offset = null) {
-        if ($offset !== null && (!is_integer($offset) || $offset < 0)) {
+        if ($offset !== null && (!is_integer($offset) || $offset < 0) && !$this->isVariable($offset)) {
             throw new DatabaseException('Provided offset should be a positive integer or zero');
         }
 
@@ -76,6 +76,10 @@ class LimitExpression extends Expression {
      */
     public function getOffset() {
         return $this->offset;
+    }
+
+    private function isVariable($value) {
+        return substr($value, 0, 1) === '%' && substr($value, -1) === '%';
     }
 
 }
