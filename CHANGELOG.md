@@ -1,5 +1,9 @@
 # ride-lib-database
 
+## 1.1.2
+### Updated
+- allow variables in limit expression
+
 ## 1.1.1
 ### Updated
 - removed usage of deprecated each function
