@@ -631,7 +631,7 @@ class GenericStatementParser implements StatementParser {
         $rowCount = $expression->getRowCount();
         $offset = $expression->getOffset();
 
-        if ($rowCount <= 0) {
+        if (is_numeric($rowCount) && $rowCount <= 0) {
             return '';
         }
 
