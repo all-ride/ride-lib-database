@@ -129,6 +129,7 @@ class DatabaseResult implements Iterator {
      * Iterator implementation: resets the internal row pointer
      * @return null
      */
+    #[\ReturnTypeWillChange]
     public function rewind() {
         $this->rowPointer = 0;
     }
@@ -138,6 +139,7 @@ class DatabaseResult implements Iterator {
      * @return array Array with the columns as key and the column values as
      * value
      */
+    #[\ReturnTypeWillChange]
     public function current() {
         return $this->rows[$this->rowPointer];
     }
@@ -146,6 +148,7 @@ class DatabaseResult implements Iterator {
      * Iterator implementation: gets the internal row pointer
      * @return integer Pointer to the current row
      */
+    #[\ReturnTypeWillChange]
     public function key() {
         return $this->rowPointer;
     }
@@ -155,6 +158,7 @@ class DatabaseResult implements Iterator {
      * row
      * @return null
      */
+    #[\ReturnTypeWillChange]
     public function next() {
         $this->rowPointer++;
     }
@@ -165,6 +169,7 @@ class DatabaseResult implements Iterator {
      * @return boolean True if the internal row pointer is on a valid row,
      * false otherwise
      */
+    #[\ReturnTypeWillChange]
     public function valid() {
         return isset($this->rows[$this->rowPointer]);
     }
