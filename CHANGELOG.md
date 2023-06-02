@@ -1,5 +1,8 @@
 # ride-lib-database
 
+## 1.2
+#### Updated
+- fixed to run on php 8.1
 ## 1.1.4
 ### Updated
 - but still allow variables

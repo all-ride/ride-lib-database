@@ -106,7 +106,7 @@ class Dsn {
             list($this->host, $this->database) = explode('/', $token);
         }
 
-        if (strpos($this->host, ':') !== false) {
+        if (is_string($this->host) && strpos($this->host, ':') !== false) {
             list($this->host, $this->port) = explode(':', $this->host);
         }
     }
