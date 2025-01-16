@@ -439,7 +439,8 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
             $sql .= ', UNIQUE (' . implode(', ', $uniques) . ')';
         }
 
-        $sql = 'CREATE TABLE ' . $tableName . ' (' . $sql . ') ENGINE=INNODB CHARACTER SET utf8';
+        // removed utf8 from table definition
+        $sql = 'CREATE TABLE ' . $tableName . ' (' . $sql . ') ENGINE=INNODB';
         $this->connection->execute($sql);
 
         foreach ($indexes as $fieldName) {
@@ -524,6 +525,8 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
     }
 
     /**
+     * @deprecated See readme on how to convert the database
+     *
      * Converts all tables in this database to UTF8
      * @return null
      * @throws \ride\library\database\exception\DatabaseException when no fields
@@ -541,7 +544,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
             if ($transactionStarted) {
                 $this->connection->commitTransaction();
             }
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             if ($transactionStarted) {
                 $this->connection->rollbackTransaction();
             }
@@ -589,7 +592,8 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
                 $sqlToBinary[] = $sql . 'longblob' . $sqlNull;
             }
 
-            $sqlFromBinary[] = $sql . $data['Type'] . ' CHARACTER SET utf8' . $sqlNull;
+            // utf8 to utf8mb4
+            $sqlFromBinary[] = $sql . $data['Type'] . ' CHARACTER SET utf8mb4' . $sqlNull;
         }
 
         if (!$sqlFromBinary) {
@@ -603,7 +607,8 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
                 $this->connection->execute($sql);
             }
 
-            $this->connection->execute('ALTER TABLE ' . $tableName . ' CHARSET utf8');
+            //  utf8 to utf8mb4
+            $this->connection->execute('ALTER TABLE ' . $tableName . ' CHARSET utf8mb4');
 
             foreach ($sqlFromBinary as $sql) {
                 $this->connection->execute($sql);
@@ -612,7 +617,7 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
             if ($transactionStarted) {
                 $this->connection->commitTransaction();
             }
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             if ($transactionStarted) {
                 $this->connection->rollbackTransaction();
             }

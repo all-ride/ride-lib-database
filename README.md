@@ -128,3 +128,28 @@ You can use [Composer](http://getcomposer.org) to install this library.
 ```
 composer require ride/lib-database
 ```
+
+## Convert utf8 to utf8mb4
+
+Show character set and collation variables:
+
+```sql
+SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
+```
+Set character set and collate on database:
+```sql
+ALTER DATABASE db CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+```
+
+Set character set and collate on table:
+```sql 
+ALTER TABLE table CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+Generate ALTER TABLE queries to set character set and collate:
+```sql 
+SELECT CONCAT('ALTER TABLE ', TABLE_SCHEMA, '.', TABLE_NAME, ' CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;')
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'db';
+```
+
+Converting the data in the columns is not required, since utf8mb4 is backwards compatible with utf8.
