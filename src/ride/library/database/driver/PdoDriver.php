@@ -68,13 +68,13 @@ class PdoDriver extends AbstractDriver {
                 $dsn .= ';port=' . $port;
             }
             $dsn .= ';dbname=' . $database;
-//         $dsn .= ';charset=utf8'; // >= PHP 5.3.6
+
+            // use correct UTF-8 encoding
+            $dsn .= ';charset=utf8mb4'; // >= PHP 5.5.3
         }
 
         $options = array(
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-//             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET CHARACTER SET utf8; SET NAMES utf8',
-//             PDO::ATTR_AUTOCOMMIT => false,
         );
 
         try {
@@ -84,10 +84,11 @@ class PdoDriver extends AbstractDriver {
                 $this->log->logDebug('Connected to ' . $this->dsn->getProtectedDsn(), null, self::LOG_SOURCE);
             }
 
-            if ($protocol == 'mysql') {
-                $this->pdo->query('SET CHARACTER SET utf8');
-                $this->pdo->query('SET NAMES utf8');
-            }
+            // this is not needed and causes problems with encoding
+            // if ($protocol == 'mysql') {
+            //     $this->pdo->query('SET CHARACTER SET utf8');
+            //     $this->pdo->query('SET NAMES utf8');
+            // }
         } catch (PDOException $exception) {
             $this->pdo = null;
 
