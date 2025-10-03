@@ -13,6 +13,7 @@ use ride\library\database\manipulation\expression\CaseExpression;
 use ride\library\database\manipulation\expression\Expression;
 use ride\library\database\manipulation\expression\FieldExpression;
 use ride\library\database\manipulation\expression\FunctionExpression;
+use ride\library\database\manipulation\expression\GroupExpression;
 use ride\library\database\manipulation\expression\LimitExpression;
 use ride\library\database\manipulation\expression\MatchExpression;
 use ride\library\database\manipulation\expression\MathematicalExpression;
@@ -321,6 +322,7 @@ class GenericStatementParser implements StatementParser {
             $sql .= $this->parseExpression($expression, $useAlias);
         }
 
+
         return $sql;
     }
 
@@ -343,6 +345,9 @@ class GenericStatementParser implements StatementParser {
         }
         if ($expression instanceof FunctionExpression) {
             return $this->parseFunctionExpression($expression, $useAlias);
+        }
+        if ($expression instanceof GroupExpression) {
+            return $this->parseGroupExpression($expression, $useAlias);
         }
         if ($expression instanceof OrderExpression) {
             return $this->parseOrderExpression($expression, $useAlias);
@@ -621,6 +626,16 @@ class GenericStatementParser implements StatementParser {
     protected function parseOrderExpression(OrderExpression $order) {
         return $this->parseExpression($order->getExpression(), true) . ' ' . $order->getDirection();
     }
+
+    /**
+     * Create the Sql of a group expression
+     * @param \ride\library\database\manipulation\expression\GroupExpression $group
+     * @return string
+     * @throws \ride\library\database\exception\DatabaseException
+     */
+    protected function parseGroupExpression(GroupExpression $group) {
+        return $this->parseExpression($group->getExpression(), true);
+}
 
     /**
      * Create the SQL of a limit expression
