@@ -1,5 +1,11 @@
 # ride-lib-database
-
+## 1.4.0
+#### Updated
+- Fixed bug in Group By statement 
+- Added GroupExpression instead of using the OrderBy for this
+## 1.3.0
+#### Updated
+- Rework convert utf8 to utf8mb4
 ## 1.2.1
 #### Updated
 - Added ReturnTypeWillChange attribute for php 8.1
