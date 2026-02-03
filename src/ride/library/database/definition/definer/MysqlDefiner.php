@@ -238,7 +238,12 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
                 if ($fieldType != $databaseFieldType || $field->getDefaultValue() != $databaseField->getDefaultValue()) {
                     $sql = 'ALTER TABLE ' . $tableName . ' CHANGE ' . $fieldName . ' ' . $fieldName . ' ' . $fieldType;
 
-                    if (!$field->isPrimaryKey()) {
+                    if ($field->isPrimaryKey()) {
+                        // MySQL 8.0 requires AUTO_INCREMENT to be explicitly specified when altering a column
+                        if ($field->isAutoNumbering() || $databaseField->isAutoNumbering()) {
+                            $sql .= ' AUTO_INCREMENT';
+                        }
+                    } else {
                         $sql .= ' DEFAULT ' . $this->getDefaultValue($field);
                     }
 
@@ -266,14 +271,18 @@ class MysqlDefiner extends AbstractDefiner implements Utf8Converter {
             if (!$foundField) {
                 $sql = 'ALTER TABLE ' . $tableName . ' ADD ' . $fieldName . ' ' . $fieldType;
 
-                if (!$field->isPrimaryKey()) {
+                if ($field->isPrimaryKey()) {
+                    if ($field->isAutoNumbering()) {
+                        $sql .= ' AUTO_INCREMENT';
+                    }
+                } else {
                     $sql .= ' DEFAULT ' . $this->getDefaultValue($field);
                 }
 
                 if (!$previousFieldName) {
-                    ' FIRST';
+                    $sql .= ' FIRST';
                 } else {
-                    ' AFTER ' . $previousFieldName;
+                    $sql .= ' AFTER ' . $previousFieldName;
                 }
 
                 $sqls[] = $sql;

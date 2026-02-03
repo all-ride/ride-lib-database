@@ -1,4 +1,7 @@
 # ride-lib-database
+## 1.5.0
+#### Updated
+- Fixed alter table and keeping auto_increment on primary key on Mysql 8.0
 ## 1.4.0
 #### Updated
 - Fixed bug in Group By statement 
